@@ -23,7 +23,8 @@ namespace RecipeBook.Controllers
         }
 
         // GET: Recipes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet("Details")]
+        public async Task<IActionResult> Details([FromQuery] int? id)
         {
             if (id == null)
             {
@@ -44,6 +45,7 @@ namespace RecipeBook.Controllers
         }
 
         // GET: Recipes/Create
+        [HttpGet("Create")]
         public IActionResult Create()
         {
             return View();
@@ -52,7 +54,7 @@ namespace RecipeBook.Controllers
         // POST: Recipes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description,RecipeCategory")] Recipe recipe)
         {
@@ -66,7 +68,8 @@ namespace RecipeBook.Controllers
         }
 
         // GET: Recipes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet("Edit")]
+        public async Task<IActionResult> Edit([FromQuery] int? id)
         {
             if (id == null)
             {
@@ -84,7 +87,7 @@ namespace RecipeBook.Controllers
         // POST: Recipes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("Edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,RecipeCategory")] Recipe recipe)
         {
@@ -117,7 +120,8 @@ namespace RecipeBook.Controllers
         }
 
         // GET: Recipes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [HttpGet("Delete")]
+        public async Task<IActionResult> Delete([FromQuery] int? id)
         {
             if (id == null)
             {
@@ -135,7 +139,7 @@ namespace RecipeBook.Controllers
         }
 
         // POST: Recipes/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost("Delete"), ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
